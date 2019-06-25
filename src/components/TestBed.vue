@@ -5,9 +5,9 @@
     </v-flex>
     <v-flex xs12>
       <v-tabs v-model="active" color="transparent" slider-color="blue">
-        <v-tab ripple>Overview</v-tab>
-        <v-tab ripple>Investments</v-tab>
-        <v-tab ripple>Transactions</v-tab>
+        <v-tab :ripple="false">Overview</v-tab>
+        <v-tab :ripple="false">Investments</v-tab>
+        <v-tab :ripple="false">Transactions</v-tab>
         <v-tab-item>1</v-tab-item>
         <v-tab-item>1</v-tab-item>
         <v-tab-item>
@@ -17,16 +17,15 @@
               <v-layout justify-end>
                 <v-menu offset-y>
                   <template v-slot:activator="{ on }">
-                    <v-btn color="primary" flat v-on="on">
+                    <v-btn color="primary" flat v-on="on" :ripple="false">
                       3 accounts
                       <v-icon right>fa-caret-down</v-icon>
                     </v-btn>
                   </template>
                   <v-list>
                     <v-list-tile
-                      v-for="(item, index) in [{ title: 'Bob and jane' }, { title: 'Bob\'s trading' }]"
+                      v-for="(item, index) in [{ title: 'Bob 1' }, { title: 'Bob 2' }, { title: 'Bob 3' }]"
                       :key="index"
-                      @click
                     >
                       <v-list-tile-title>{{ item.title }}</v-list-tile-title>
                     </v-list-tile>
@@ -38,72 +37,86 @@
 
           <div class="card">
             <v-layout wrap align-center>
-              <v-flex xs8 md4 d-flex>
+              <v-flex xs8 md5 d-flex>
                 <v-layout align-center>
-                  <v-select :items="items" label="7 days" :menu-props="{ 'offset-y': true }"></v-select>
+                  <v-select :items="items" label="Start" :menu-props="{ 'offset-y': true }"></v-select>
                   <span style="margin:0 32px;">To</span>
                   <div>
-                    <v-select :items="items" label="7 days" :menu-props="{ 'offset-y': true }"></v-select>
+                    <v-select :items="items" label="End" :menu-props="{ 'offset-y': true }"></v-select>
                   </div>
                 </v-layout>
               </v-flex>
-              <v-flex xs4 md6 offset-md2 d-flex>
+              <v-flex xs4 md6 offset-md1 d-flex>
                 <v-layout align-center>
-                  <v-text-field v-model="search" label="First name" required class="hidden-xs-only"></v-text-field>
-                  <v-btn flat small>
+                  <v-text-field v-model="search" label="Search" required class="hidden-xs-only"></v-text-field>
+                  <v-btn flat color="primary">
                     <span class="hidden-xs-only">Download</span>
                     <v-icon right>fa-download</v-icon>
                   </v-btn>
                 </v-layout>
               </v-flex>
             </v-layout>
-            <v-expansion-panel>
-              <v-expansion-panel-content
-                v-for="(item,i) in ['Buys & Sells', 'Income', 'Cash']"
-                :key="i"
-              >
-                <template v-slot:actions>
-                  <v-icon color="primary">fa-caret-down</v-icon>
-                </template>
-                <div slot="header" style="display:flex;">
-                  <h2 style="flex: 2;font-size: 16px; font-weight: 600; color: #333333;">{{ item }}</h2>
-                  <span style="font-size: 18px;font-weight: 600;color: #333333;">$23,232,232</span>
-                </div>
 
-                <v-data-table
-                  :headers="headers"
-                  :items="desserts"
-                  :expand="false"
-                  hide-actions
-                  :hide-headers="isMobile"
+            <div class="table-wrapper">
+              <div class="table-wrapper__header">
+                <div style="flex:2;display: flex; align-content: center;">
+                  <v-icon color="primary" size="18px" left>fa-arrows-alt-v</v-icon>
+                  <span>Expand all</span>
+                </div>
+                <span class="table-wrapper__header__heading">No of transactions</span>
+                <span class="table-wrapper__header__heading">Net amount</span>
+              </div>
+              <v-expansion-panel>
+                <v-expansion-panel-content
+                  v-for="(item,i) in ['Buys & Sells', 'Income', 'Cash']"
+                  :key="i"
                 >
-                  <template v-slot:items="props">
-                    <template v-if="!isMobile">
-                      <td class="text-xs-left">{{ props.item.name }}</td>
-                      <td class="text-xs-center">
-                        <v-chip color="primary" outline>{{ props.item.calories }}</v-chip>
-                      </td>
-                      <td class="text-xs-right">{{ props.item.fat }}</td>
-                      <td class="text-xs-right">{{ props.item.carbs }}</td>
-                      <td class="text-xs-right">{{ props.item.protein }}</td>
-                      <td class="text-xs-right">{{ props.item.iron }}</td>
-                    </template>
-                    <tr v-else>
-                      <td>
-                        <ul class="flex-content">
-                          <li class="flex-item" data-label="Name">{{ props.item.name }}</li>
-                          <li class="flex-item" data-label="Calories">{{ props.item.calories }}</li>
-                          <li class="flex-item" data-label="Fat (g)">{{ props.item.fat }}</li>
-                          <li class="flex-item" data-label="Carbs (g)">{{ props.item.carbs }}</li>
-                          <li class="flex-item" data-label="Protein (g)">{{ props.item.protein }}</li>
-                          <li class="flex-item" data-label="Iron (%)">{{ props.item.iron }}</li>
-                        </ul>
-                      </td>
-                    </tr>
+                  <template v-slot:actions>
+                    <v-icon color="primary">fa-caret-down</v-icon>
                   </template>
-                </v-data-table>
-              </v-expansion-panel-content>
-            </v-expansion-panel>
+                  <div slot="header" style="display:flex;">
+                    <h2
+                      style="flex: 2;font-size: 16px; font-weight: 600; color: #333333;"
+                    >{{ item }}</h2>
+                    <span style="font-size: 18px;font-weight: 600;color: #333333;">$23,232,232</span>
+                  </div>
+
+                  <v-data-table
+                    :headers="headers"
+                    :items="desserts"
+                    :expand="false"
+                    hide-actions
+                    :hide-headers="isMobile"
+                  >
+                    <template v-slot:items="props">
+                      <template v-if="!isMobile">
+                        <td class="text-xs-left">{{ props.item.name }}</td>
+                        <td class="text-xs-center">
+                          <v-chip color="primary" outline>{{ props.item.calories }}</v-chip>
+                        </td>
+                        <td class="text-xs-right">{{ props.item.fat }}</td>
+                        <td class="text-xs-right">{{ props.item.carbs }}</td>
+                        <td class="text-xs-right">{{ props.item.protein }}</td>
+                        <td class="text-xs-right">{{ props.item.iron }}</td>
+                      </template>
+                      <tr v-else>
+                        <td>
+                          <ul class="flex-content">
+                            <li class="flex-item" data-label="Name">{{ props.item.name }}</li>
+                            <li class="flex-item" data-label="Calories">{{ props.item.calories }}</li>
+                            <li class="flex-item" data-label="Fat (g)">{{ props.item.fat }}</li>
+                            <li class="flex-item" data-label="Carbs (g)">{{ props.item.carbs }}</li>
+                            <li class="flex-item" data-label="Protein (g)">{{ props.item.protein }}</li>
+                            <li class="flex-item" data-label="Iron (%)">{{ props.item.iron }}</li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </template>
+                  </v-data-table>
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </div>
+
             <v-layout style="margin: 12px 0">
               <span style="flex: 2;font-size: 18px;font-weight: 600;color: #333333;">Total</span>
 
@@ -237,6 +250,25 @@ export default {
     padding: 26px 30px;
     border: 1px solid #e3e5ef;
     border-radius: 0.5rem;
+  }
+
+  .table-wrapper {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+    &__header {
+      display: flex;
+      align-content: center;
+      padding-bottom: 3px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+      &__heading {
+        font-size: 12px;
+        text-align: right;
+        color: #707075;
+        min-width: 140px;
+        margin-left: 10px;
+      }
+    }
   }
 }
 </style>

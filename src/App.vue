@@ -70,7 +70,7 @@ export default {
         {
           heading: 'Entities',
           model: true,
-          children: [{ text: 'Bob and jane' }, { text: "Bob's trading" }, { text: "Ben's trust" }]
+          children: [{ text: 'Bob and jane' }, { text: 'Bob and Someones' }, { text: "Ben's trust" }]
         },
         {
           heading: 'Other reporting groups',
