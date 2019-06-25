@@ -12,5 +12,10 @@
     & > .v-window {
         padding-top: 24px;
         border-top: 1px solid #d3d7d3
+        
+        // The height is set via javascript and its finicky..
+        .v-window__container {
+            height: auto !important;
+        }
     }
 }
