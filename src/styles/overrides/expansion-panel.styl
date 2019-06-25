@@ -1,0 +1,29 @@
+.v-expansion-panel {
+    box-shadow: none;
+    &.theme--light, &.theme--dark {
+        .v-expansion-panel__container {
+            background-color: transparent;
+
+            .v-expansion-panel__header {
+                padding: 24px 0;
+
+                & > *:first-child {
+                    order: 2;
+                }
+                &__icon {
+                    order: 1
+                    margin-right: 10px;
+                }
+            }
+
+            &--active {
+                .v-expansion-panel__header {
+                    padding-bottom: 9px;
+                }
+            }
+        }
+    }
+
+    
+  
+}

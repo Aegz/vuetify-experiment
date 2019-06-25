@@ -1,0 +1,33 @@
+.theme--light {
+    &.v-table tbody tr {
+        border-bottom: none;
+    }
+}
+
+
+.v-select, .v-input {
+    // Wrap inputs in a border and remove the underline
+    & > .v-input__control > .v-input__slot, & > .v-input__control > .v-input__slot {
+        border-radius: 10px;
+        border: solid 1px #e3e5ef;
+        background-color: #ffffff;
+        padding: 3px 9px;
+    
+        &::before, &::after  {
+            content: none;
+        }
+    }
+
+
+    // &.v-input--is-dirty {
+    //     .v-input__control > .v-input__slot {
+    //         border-color: red;
+    //     }
+    // }
+}
+
+.v-text-field .v-label--active {
+    max-width: 133%;
+    -webkit-transform: translateY(-26px) scale(0.75);
+    transform: translateY(-26px) scale(0.75);
+}

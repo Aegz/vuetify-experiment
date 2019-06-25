@@ -1,0 +1,29 @@
+
+.v-navigation-drawer {
+    .v-list { 
+        &, &--dense {
+            .v-list__tile {
+                padding: 23px 30px;
+                height: auto;
+
+                &:not(.v-list__tile--avatar) {
+                    height: auto;
+                }
+            }
+        }
+        .v-list__tile {
+            font-size: 16px;
+            font-weight: 600;
+
+            &--active {
+                background: #f7f7f7;
+                border-right: 4px solid #006dbe;
+            }
+        }
+    }
+
+    .v-subheader {
+        height: auto;
+        padding: 44px 30px 4px 30px;
+    }
+}
