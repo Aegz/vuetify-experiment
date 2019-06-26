@@ -1,9 +1,3 @@
-.theme--light {
-    &.v-table tbody tr {
-        border-bottom: none;
-    }
-}
-
 
 .v-select, .v-input {
     // Wrap inputs in a border and remove the underline
@@ -17,15 +11,9 @@
             content: none;
         }
     }
-
-
-    // &.v-input--is-dirty {
-    //     .v-input__control > .v-input__slot {
-    //         border-color: red;
-    //     }
-    // }
 }
 
+// Push the label higher so itas above the border around the form input (default is 18px?)
 .v-text-field .v-label--active {
     max-width: 133%;
     -webkit-transform: translateY(-26px) scale(0.75);

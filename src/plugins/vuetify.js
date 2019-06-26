@@ -1,6 +1,10 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib';
-import 'vuetify/src/stylus/app.styl';
+// Variable override file
+import '../styles/variables.styl';
+// import 'vuetify/src/stylus/app.styl';
+// Use an override style sheet
+import '../styles/core.styl';
 
 Vue.use(Vuetify, {
     theme: {

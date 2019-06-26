@@ -1,12 +1,20 @@
 
+
+// Icon in the data table is a bit too close to the text. looks bad
 .v-datatable  {
     & thead th.column.sortable .v-icon {
         margin-right: 5px;
     }
-   
 }
 
+// No borders underneath the table (could be done as extension class)
+.theme--light, .theme--dark {
+    &.v-table tbody tr:not(:last-child) {
+        border-bottom: none;
+    }
+}
 
+// Example of responsive override for tables IF required.
 @media screen and (max-width: 768px) {
     table.v-table tr {
         max-width: 100%;

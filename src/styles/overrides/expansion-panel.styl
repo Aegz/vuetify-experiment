@@ -1,5 +1,8 @@
+// Expansion panels would effectively be accordions
 .v-expansion-panel {
     box-shadow: none;
+
+    // Remove the background color and adjust the padding in the header
     &.theme--light, &.theme--dark {
         .v-expansion-panel__container {
             background-color: transparent;
@@ -7,9 +10,12 @@
             .v-expansion-panel__header {
                 padding: 24px 0;
 
+                // Also move the main content to the right
                 & > *:first-child {
                     order: 2;
                 }
+                
+                // Force the icon to the left
                 &__icon {
                     order: 1
                     margin-right: 10px;

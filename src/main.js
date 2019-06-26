@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import './plugins/vuetify';
 import App from './App.vue';
-import './styles/core.styl';
 import 'roboto-fontface/css/roboto/roboto-fontface.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 

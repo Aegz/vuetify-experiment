@@ -1,19 +1,25 @@
+// No variables for overriding tab items
 .v-tabs {
+    // Slider was too small, bump to 5px
     &__slider {
         height: 5px;
     }
+    // Tabs should not be uppercase
     &__div {
         text-transform: none;
-
+        
+        // Spacing is temporary. Design doesn't specify padding..
         .v-tabs__item {
             padding: 6px 20px;
         }
     }
+    // Force a border underneath a tab implementation since thats the only usecase for
+    // us
     & > .v-window {
         padding-top: 24px;
         border-top: 1px solid #d3d7d3
         
-        // The height is set via javascript and its finicky..
+        // The height is set via javascript and its finicky so disable it here
         .v-window__container {
             height: auto !important;
         }

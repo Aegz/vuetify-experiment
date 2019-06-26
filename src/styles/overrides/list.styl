@@ -1,5 +1,7 @@
 
+// The main nav sidebar (theres only one and its for desktop)
 .v-navigation-drawer {
+    // We use a generic v-list but we need the padding to be different
     .v-list { 
         &, &--dense {
             .v-list__tile {
@@ -21,7 +23,7 @@
             }
         }
     }
-
+    // Custom implementation for sub-header to match designs
     .v-subheader {
         height: auto;
         padding: 44px 30px 4px 30px;
